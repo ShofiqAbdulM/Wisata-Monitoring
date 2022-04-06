@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('main-content')
+@section('map-content')
     <!-- Leaflet  -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -94,20 +95,22 @@
                                         // alert(detail[index].gambar);
                                         // L.marker(layer.getBounds().getCenter()).addTo(
                                         //     map);
-                                        var html = '<h5>NamaLokasi :' +
-                                            detail[index].nama + '</h5>';
-                                        html += '<h3>Alamat :' + detail[index].alamat +
-                                            '</h3>';
-                                        html += '<h3>' + detail[index].gambar +
-                                            '</h3>';
+                                        var html =
+                                            '<div align="center"><p style="color:#FF0000;  font-family:Helvetica Neue; font-size:25px;" class="text-uppercase"><strong>' +
+                                            detail[index].nama + '</strong></p>';
+                                        html += '<img src="img/' + detail[index]
+                                            .gambar +
+                                            ' " width="700em" height="500em"></div>';
+
                                         L.popup()
                                             .setLatLng(layer.getBounds().getCenter())
                                             .setContent(html)
-                                            .openOn(map);
-                                        // var popup = L.popup({
-                                        //     maxWidth: 400
-                                        // });
-                                        // layer.bindPopup(popup).openPopup();
+                                            .addTo(map);
+                                        // L.popup()
+                                        //     .setLatLng(layer.getBounds().getCenter())
+                                        //     .setContent(html)
+                                        //     .openOn(map);
+
                                     });
                                 });
                             })
