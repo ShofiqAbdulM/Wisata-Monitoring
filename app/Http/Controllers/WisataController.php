@@ -89,8 +89,6 @@ class WisataController extends Controller
     public function lokasi($id = '')
     {
 
-        // $results = Wisata::where('id', $id)->first('lokasi');
-        // $results = Wisata::find($id);
         $results = $this->Wisata->getLokasi($id);
         return json_encode($results);
     }

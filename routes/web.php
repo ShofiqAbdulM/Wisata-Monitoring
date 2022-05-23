@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\WisataController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +22,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/wisata', [WisataController::class, 'index']);
+Route::get('/wisata/{id}', [HomeController::class, 'lokasi']);
 
-Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::put('/profile', 'ProfileController@update')->name('profile.update');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-Route::get('/wisata/{id}', [WisataController::class, 'lokasi']);
+// Route::get('/wisata/{id}', [WisataController::class, 'lokasi']);
+// Route::get('/wisata/{id}', [WisataController::class, 'index']);
+
+Route::get('chart-js', [ChartJSController::class, 'index']);

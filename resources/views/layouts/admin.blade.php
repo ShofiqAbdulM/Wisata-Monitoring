@@ -19,9 +19,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
+
+
     @yield('styles')
 
     <!-- Favicon -->
@@ -43,18 +42,15 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background: black">
                     <!-- Logo -->
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center"
-                        href="{{ route('home') }}">
-                        <div class="sidebar-brand mx-3">
+                    <a class="d-flex align-items-center justify-content-center" href="{{ route('home') }}">
+                        <div class="mx-2">
                             <img src="{{ asset('img/hori.svg') }}" width="100em" height="50em">
                         </div>
-                        {{-- <div class="sidebar-brand mx-3"></div> --}}
                     </a>
                     {{-- {{-- <!-- Topbar Search --> --}}
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search ">
+                    {{-- <form class="d-none d-sm-inline-block form-inline mw-10 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Cari Wisata..."
+                            <input type="text" class="form-control bg-light border-0 large" placeholder="Cari Wisata..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
@@ -62,7 +58,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -72,10 +68,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span
-                                    class="mr-2 d-none d-lg-inline text-white small">{{ Auth::user()->last_name }}</span>
+                                <span class="mr-2 d-none d-lg-inline text-white small">{{ Auth::user()->name }}</span>
                                 <figure class="img-profile rounded-circle avatar font-weight-bold"
-                                    data-initial="{{ Auth::user()->last_name[0] }}"></figure>
+                                    data-initial="{{ Auth::user()->name[0] }}"></figure>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -98,14 +93,14 @@
                         </li>
 
                     </ul>
-
                 </nav>
+
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     @stack('notif')
-                    @yield('map-content')
+                    @yield('main-content')
 
                 </div>
                 <!-- /.container-fluid -->
@@ -162,11 +157,15 @@
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1.0/dist/js/adminlte.min.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('vendor/echarts/echarts.min.js') }}"></script>
+
+    {{-- <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1.0/dist/js/adminlte.min.js"></script> --}}
     @stack('js')
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+
     @stack('javascript')
 </body>
 
